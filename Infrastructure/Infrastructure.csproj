@@ -1,0 +1,50 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181130192731_T.cs" />
+    <Compile Remove="Migrations\20181130192849_Initial.cs" />
+    <Compile Remove="Migrations\20181130193259_Initial.cs" />
+    <Compile Remove="Migrations\20181130193437_Initial.cs" />
+    <Compile Remove="Migrations\20181130193714_Initial.cs" />
+    <Compile Remove="Migrations\20181130193810_Initial.cs" />
+    <Compile Remove="Migrations\20181130193930_Initial.cs" />
+    <Compile Remove="Migrations\20181130194501_Initial.cs" />
+    <Compile Remove="Migrations\20181130194608_Initial.cs" />
+    <Compile Remove="Migrations\20181130194710_Initial.cs" />
+    <Compile Remove="Migrations\20181130195233_Initial.cs" />
+    <Compile Remove="Migrations\20181201142948_Initial.cs" />
+    <Compile Remove="Migrations\20181201143043_Initial.cs" />
+    <Compile Remove="Migrations\20181201160440_Initial.cs" />
+    <Compile Remove="Migrations\20181202101235_Initial.cs" />
+    <Compile Remove="Migrations\20181202111848_Initial.cs" />
+    <Compile Remove="Migrations\20181202123342_Initial.cs" />
+    <Compile Remove="Migrations\20181202125457_s.cs" />
+    <Compile Remove="Migrations\20181202125957_Initial.cs" />
+    <Compile Remove="Migrations\20181202130015_Initial.cs" />
+    <Compile Remove="Migrations\20181202130140_Init.cs" />
+    <Compile Remove="Migrations\20181202131920_Initial.cs" />
+    <Compile Remove="Migrations\20181202132417_test.cs" />
+    <Compile Remove="Migrations\20181202134825_Initial.cs" />
+    <Compile Remove="Migrations\20181202152643_Initial.cs" />
+    <Compile Remove="Migrations\20181202162127_Initial.cs" />
+    <Compile Remove="Migrations\20181202181517_Initial.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+  </ItemGroup>
+
+</Project>
