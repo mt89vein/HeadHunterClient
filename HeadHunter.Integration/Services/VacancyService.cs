@@ -108,7 +108,7 @@ namespace HeadHunter.Integration.Services
 
             var headHunterFilter = new HeadHunterFilterJsonModel(filter);
             var queryString = await UrlHelper.ToQueryStringAsync(headHunterFilter);
-            var httpResponse = await _httpClient.GetAsync($"vacancies?{queryString}");
+            var httpResponse = await _httpClient.GetAsync($"{_settings.EndpointUrl}?{queryString}");
 
             httpResponse.EnsureSuccessStatusCode();
 
