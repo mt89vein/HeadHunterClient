@@ -91,7 +91,7 @@ namespace HeadHunter.Integration.Services
         {
             try
             {
-                return  await TryGetFilteredFromHeadHunter(filter);
+                return await TryGetFilteredFromHeadHunter(filter);
             }
             catch (HttpRequestException e)
             {
@@ -123,7 +123,7 @@ namespace HeadHunter.Integration.Services
 
         private async Task<DataPage<Vacancy>> GetFilteredFromDatabase(VacancyFilter filter)
         {
-            var query = _context.Vacancies.AsNoTracking().AsQueryable();
+            var query = _context.Vacancies.Include(v => v.Employer).AsNoTracking().AsQueryable();
 
             if (!String.IsNullOrWhiteSpace(filter.Text))
             {
@@ -184,6 +184,16 @@ namespace HeadHunter.Integration.Services
                         (!v.Salary.From.HasValue || v.Salary.From.HasValue && ApplicationContext.ConvertToCurrency(v.Salary.From, filter.SalaryFilter.CurrencyCode) <= filter.SalaryFilter.Salary) &&
                         (!v.Salary.To.HasValue || v.Salary.To.HasValue && ApplicationContext.ConvertToCurrency(v.Salary.To, filter.SalaryFilter.CurrencyCode) >= filter.SalaryFilter.Salary));
                 }
+            }
+
+            if (filter.DateFrom.HasValue)
+            {
+                query = query.Where(v => v.PublishedAt >= filter.DateFrom);
+            }
+
+            if (filter.DateTo.HasValue)
+            {
+                query = query.Where(v => v.PublishedAt <= filter.DateTo);
             }
 
             query = query.OrderBy(v => v.Id);

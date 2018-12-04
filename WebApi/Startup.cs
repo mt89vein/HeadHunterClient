@@ -54,8 +54,7 @@ namespace WebApi
 
             app.UseHttpsRedirection();
             app.UseMvcWithDefaultRoute();
-            app.UseDefaultFiles();
-            app.UseStaticFiles();
+            app.UseFileServer();
         }
     }
 }

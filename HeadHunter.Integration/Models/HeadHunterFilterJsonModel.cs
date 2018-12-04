@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Domain.Enums;
 using Domain.SearchModels;
 using Newtonsoft.Json;
@@ -15,10 +16,10 @@ namespace HeadHunter.Integration.Models
         public HeadHunterFilterJsonModel(VacancyFilter filter)
         {
             Text = filter.Text;
-            SearchFields = filter.SearchFields;
+            SearchFields = filter.SearchFields.Select(sf => sf.ToHeadHunterFormat()).ToList();
             AreaExternalId = filter.AreaExternalId;
-            Experience = filter.Experience;
-            ScheduleTypes = filter.ScheduleTypes;
+            Experience = filter.Experience.ToHeadHunterFormat();
+            ScheduleTypes = filter.ScheduleTypes.Select(st => st.ToHeadHunterFormat()).ToList();
             MetroExternalId = filter.MetroExternalId;
             SpecializationsExternalId = filter.SpecializationExternalIds;
             EmployerExternalId = filter.EmployerExternalId;
@@ -36,13 +37,13 @@ namespace HeadHunter.Integration.Models
         public string Text { get; set; }
 
         [JsonProperty("search_field")]
-        public IReadOnlyList<SearchField> SearchFields { get; set; }
+        public IReadOnlyList<string> SearchFields { get; set; }
 
         [JsonProperty("experience")]
-        public ExperienceType? Experience { get; set; }
+        public string Experience { get; set; }
 
         [JsonProperty("schedule")]
-        public IReadOnlyList<ScheduleType> ScheduleTypes { get; set; }
+        public IReadOnlyList<string> ScheduleTypes { get; set; }
 
         [JsonProperty("area")]
         public string AreaExternalId { get; set; }

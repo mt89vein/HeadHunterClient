@@ -36,7 +36,7 @@ namespace HeadHunter.Integration.Models
 
         public Employer GetModel()
         {
-            return new Employer(Name, Id, Url.ToString(), LogoUrlsJsonModel?.GetModel());
+            return new Employer(Name, Id, Url?.ToString(), LogoUrlsJsonModel?.GetModel());
         }
     }
 }

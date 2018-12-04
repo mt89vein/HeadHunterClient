@@ -22,8 +22,7 @@ namespace WebApi.Controllers
         public VacancyController(
             IVacancyService vacancyService, 
             IEmployerService employerService, 
-            IDepartmentService departmentService,
-            ApplicationContext context
+            IDepartmentService departmentService
             )
         {
             _vacancyService = vacancyService ?? throw new ArgumentNullException(nameof(vacancyService));
@@ -59,20 +58,6 @@ namespace WebApi.Controllers
             }
 
             return result;
-        }
-
-        [HttpGet]
-        [Route("currencies")]
-        public ActionResult<IEnumerable<Currency>> Currencies([FromServices] ApplicationContext context)
-        {
-            return context.Currencies.ToList();
-        }
-
-        [HttpGet]
-        [Route("profAreas")]
-        public ActionResult<IEnumerable<ProfessionalArea>> ProfessionalAreas([FromServices] ApplicationContext context)
-        {
-            return context.ProfessionalAreas.Include(p => p.Specializations).ToList();
         }
     }
 }

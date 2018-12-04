@@ -81,5 +81,13 @@ namespace HeadHunter.Integration.Services
 
             _context.SaveChanges();
         }
+
+        public async Task<IReadOnlyList<Currency>> GetByQueryAsync(string query)
+        {
+            return await _context.Currencies
+                .Where(c => c.Abbreviation.Contains(query) || c.Name.Contains(query))
+                .Take(100)
+                .ToListAsync();
+        }
     }
 }

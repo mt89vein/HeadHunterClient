@@ -22,7 +22,7 @@ namespace Domain.SearchModels
         /// <summary>
         /// Текстовый поиск
         /// </summary>
-        public string Text { get; set; } = "c# developer";
+        public string Text { get; set; }
 
         /// <summary>
         /// Где осуществлять поиск
@@ -47,7 +47,7 @@ namespace Domain.SearchModels
         ///// <summary>
         ///// Идентификатор региона
         ///// </summary>
-        //public string AreaExternalId { get; set; }
+        public string AreaExternalId { get; set; }
 
         /// <summary>
         /// Идентификаторы специализаций
@@ -58,11 +58,6 @@ namespace Domain.SearchModels
         /// Фильтр по зарплате
         /// </summary>
         public SalaryFilter SalaryFilter { get; set; }
-
-        /// <summary>
-        /// Идентификатор региона
-        /// </summary>
-        public string AreaExternalId { get; set; }
 
         /// <summary>
         /// Идентификатор метро

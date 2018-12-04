@@ -110,6 +110,14 @@ namespace HeadHunter.Integration.Services
             }
         }
 
+        public async Task<IReadOnlyList<Specialization>> GetByQueryAsync(string query)
+        {
+            return await _context.Specializations
+                .Where(c => c.Name.Contains(query))
+                .Take(100)
+                .ToListAsync();
+        }
+
         public override void Save(ProfessionalArea professionalArea)
         {
             var persistedProfessionalArea = _context.ProfessionalAreas.AsNoTracking().FirstOrDefault(d => d.ExternalId.Equals(professionalArea.ExternalId));
